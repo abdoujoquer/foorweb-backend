@@ -7,29 +7,35 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/image", express.static("image")); 
-let imageName = ""; 
+app.use("/image", express.static("image"));
+let imageName = "";
 const storage = multer.diskStorage({
-  destination: path.join("./image"), 
-  filename: function (req, file, cb) {
-    imageName = Date.now() + path.extname(file.originalname);
-    cb(null, imageName);
-  },
+    destination: path.join("./image"),
+    filename: function (req, file, cb) {
+        imageName = Date.now() + path.extname(file.originalname);
+        cb(null, imageName);
+    },
 });
 const upload = multer({
-  storage: storage,
-  limits: { fileSize: 3000000 },
+    storage: storage,
+    limits: { fileSize: 3000000 },
 }).single("myImage");
+app.get("*", (req, res) => {
+
+    // Here user can also design an
+    // error page and render it 
+    res.send("foorweb back end");
+});
 app.post("/upload-image", (req, res) => {
-  upload(req, res, (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      return res.status(201)
-      .json({ url: "http://localhost:5000/image/" + imageName }); 34
-    }
-  });
+    upload(req, res, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            return res.status(201)
+                .json({ url: "http://localhost:5000/image/" + imageName }); 34
+        }
+    });
 });
 app.listen(port, () => {
-  console.log("server run in port", port);
+    console.log("server run in port", port);
 });
