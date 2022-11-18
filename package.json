@@ -1,25 +1,15 @@
 {
-  "name": "foorweb-backend",
+  "name": "spaces-node-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abdessalem1998/foorweb-backend.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/abdessalem1998/foorweb-backend/issues"
-  },
-  "homepage": "https://github.com/abdessalem1998/foorweb-backend#readme",
+  "license": "MIT",
   "dependencies": {
-    "cors": "^2.8.5",
+    "aws-sdk": "^2.1256.0",
     "express": "^4.18.2",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "multer-s3": "^2.0.1"
   }
 }
