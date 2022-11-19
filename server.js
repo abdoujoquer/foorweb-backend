@@ -44,6 +44,7 @@ app.get("/error", function (request, response) {
 });
 
 app.post('/upload', function (request, response, next) {
+  request.header("Access-Control-Allow-Origin", "*");
   upload(request, response, function (error) {
     if (error) {
       console.log(error);
